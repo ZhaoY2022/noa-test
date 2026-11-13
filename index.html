@@ -11,6 +11,7 @@ body{max-width:980px;margin:12px auto;padding:10px;background:#f5f7fa;}
 .btn{padding:8px 10px;margin:4px;border:none;border-radius:6px;font-size:13px;cursor:pointer}
 .btn-blue{background:#2b7bdd;color:white}
 .btn-red{background:#dd3b3b;color:white}
+.btn-light{background:#eaf0f7;color:#355476;border:1px solid #d6e0ec}
 textarea{width:100%;min-height:260px;padding:10px;font-size:14px;border:1px solid #ccc;border-radius:6px}
 #issueArea{min-height:140px;}
 .input-row{margin:8px 0;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
@@ -23,6 +24,85 @@ h4{margin:0;font-size:16px;}
 .event-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:6px 0;}
 .event-row select{flex:1;min-width:220px;}
 .btn-line{display:flex;align-items:center;gap:6px;margin:4px 0;flex-wrap:wrap}
+.acc-section{border:1px solid #e2e9f3;background:#f9fbff;border-radius:8px;padding:10px 12px;margin:10px 0}
+.acc-section h5{margin:0 0 6px;font-size:14px;color:#254b73}
+.acc-help{margin:4px 0 6px;color:#586a7a;font-size:12px;line-height:1.5}
+.acc-note{flex:1;min-width:220px;width:100%;max-width:100%}
+.acc-section .event-row select{min-width:180px}
+@media (max-width:600px){.acc-section .event-row select,.acc-note{flex:1 1 100%;min-width:0}}
+
+/* 纵向问题记录：独立地形、问题单选、移动端适配 */
+:root{--brand:#286cc4;--ink:#243449;--muted:#63758a;--line:#dfe6ee;--soft:#f8fafc}
+body{max-width:1080px;color:var(--ink);line-height:1.55}
+.box{padding:18px 20px;border:1px solid #edf0f4}
+h3{margin:0 0 12px;font-size:22px}
+h4{margin-bottom:10px}
+.btn{min-height:37px;transition:filter .15s ease}
+.btn:hover{filter:brightness(.94)}
+button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #9cc8fc;outline-offset:2px}
+.long-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:18px 0 8px}
+.long-header h4{margin:0}
+.long-hint{font-size:12px;color:var(--muted)}
+.terrain-panel,.longitudinal-panel{border:1px solid var(--line);border-radius:11px;padding:15px 16px;margin:10px 0;background:#fff}
+.terrain-panel{background:#f7faff;border-color:#d9e5f4}
+.subhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:5px}
+.subhead h5{margin:0;font-size:15px;color:#27466d}
+.pill-meta{font-size:11px;border-radius:16px;padding:2px 9px;color:#426b9b;background:#e9f2ff;font-weight:600}
+.small-help{font-size:12px;color:var(--muted);margin:3px 0 11px}
+.terrain-group-title{font-weight:600;font-size:12px;color:#63778f;margin:11px 0 7px}
+.terrain-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}
+.terrain-chip{display:flex;align-items:center;gap:7px;min-height:38px;padding:7px 10px;border:1px solid #dbe5f0;border-radius:8px;background:white;font-size:13px;cursor:pointer;white-space:nowrap}
+.terrain-chip:has(input:checked){background:#e4f0ff;border-color:#90b9eb;color:#215ca5;font-weight:600}
+.terrain-chip input{margin:0;width:16px;height:16px;accent-color:var(--brand);flex:none}
+.issue-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-items:start;margin-top:12px}
+.issue-card{min-width:0;background:#f9fbfd;border:1px solid #e1e9f2;border-radius:10px;padding:12px}
+.issue-card h5{font-size:15px;margin:0 0 3px;color:#2b507e}
+.issue-card .small-help{min-height:18px;margin:0 0 9px}
+.issue-picker{border:1px solid #cad8e9;border-radius:8px;background:white;overflow:hidden}
+.issue-picker summary{list-style:none;cursor:pointer;padding:10px 11px;display:flex;gap:6px;align-items:center;justify-content:space-between;font-size:13px;font-weight:600;min-height:44px}
+.issue-picker summary::-webkit-details-marker{display:none}
+.issue-picker summary:after{content:'⌄';color:#627d9f;order:3;font-size:19px;line-height:1}
+.issue-picker[open] summary:after{content:'⌃'}
+.issue-picker[open] summary{border-bottom:1px solid #e0e7ef}
+.selected-count{font-size:11px;color:#3c6fb0;font-weight:500;white-space:nowrap;margin-left:auto}
+.issue-options{padding:6px;max-height:242px;overflow-y:auto;overscroll-behavior:contain}
+.issue-option{display:flex;align-items:flex-start;gap:7px;padding:8px 6px;border-radius:6px;font-size:13px;line-height:1.4;cursor:pointer}
+.issue-option:hover{background:#f0f6ff}
+.issue-option:has(input:checked){color:#235a98;background:#eaf3ff;font-weight:600}
+.issue-option input{margin:2px 0 0;accent-color:var(--brand);flex:none;width:16px;height:16px}
+.pcc-single{display:flex;align-items:flex-start;gap:8px;background:#fff;border:1px solid #cad8e9;border-radius:8px;padding:12px 10px;font-size:13px;min-height:44px;cursor:pointer}
+.pcc-single input{margin:2px 0 0;width:16px;height:16px;accent-color:var(--brand);flex:none}
+.pcc-single:has(input:checked){background:#eaf3ff;border-color:#90b9eb;color:#245d9e;font-weight:600}
+.long-note{display:block;width:100%;max-width:none;min-height:42px;margin:12px 0 0;padding:9px 11px;border:1px solid #cfdae7;border-radius:8px;font-size:13px}
+.long-actions{margin-top:12px;padding-top:12px;border-top:1px solid #e2eaf3;display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.long-actions .btn{margin:0;min-height:42px;padding:8px 14px}
+.long-actions .btn-red{font-weight:700}
+.tte-label{display:inline-flex;align-items:center;gap:7px;cursor:pointer;font-size:13px;font-weight:600;margin-right:auto}
+.tte-label input{width:17px;height:17px;accent-color:#d43d3d}
+.selection-status{font-size:12px;color:#61748c;margin:9px 0 0}
+@media(max-width:820px){.issue-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.terrain-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:620px){
+ body{margin:0 auto;padding:8px;background:#f2f5fa}
+ .box{padding:14px 12px;border-radius:9px;margin-bottom:10px}
+ h3{font-size:19px}
+ .terrain-panel,.longitudinal-panel{padding:12px 10px}
+ .terrain-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+ .terrain-chip{white-space:normal;font-size:12px;min-height:42px;padding:7px}
+ .issue-grid{grid-template-columns:1fr;gap:9px}
+ .issue-card{padding:10px}
+ .issue-card .small-help{min-height:0}
+ .long-actions .btn{flex:1 1 140px}
+ .tte-label{flex-basis:100%}
+ .event-row select{min-width:0;width:100%;flex-basis:100%}
+ .event-row{gap:7px}
+ .event-row .btn{margin:0}
+ .input-row input[type=text],.input-row input[type=number]{min-width:0;max-width:100%}
+ .title-row{gap:8px;flex-wrap:wrap}
+ .title-row h4{flex:1 1 240px}
+ .stat{font-size:13px}
+}
+@media(max-width:360px){.terrain-grid{grid-template-columns:1fr 1fr}.terrain-chip{font-size:11px}}
+
 </style>
 </head>
 <body>
@@ -37,6 +117,8 @@ h4{margin:0;font-size:16px;}
 <option value="377车" selected>377车</option>
 <option value="382车">382车</option>
 <option value="383车">383车</option>
+<option value="251车">251车</option>
+<option value="混动725车">混动725车</option>
 </select>
 
 <label>重量：</label>
@@ -65,7 +147,7 @@ h4{margin:0;font-size:16px;}
 <input id="routeText" type="text" placeholder="例如：永乐东-零口" value="永乐东-腰市">
 </div>
 
-<p>正常事件直接点击按钮（无TTE勾选）；其余问题事件下拉选择，勾选本行TTE后点记录；日志自动本地保存，关闭页面不会丢失</p>
+<p>正常事件直接点击蓝色按钮；问题事件可勾选 TTE。纵向问题在巡航、跟车、PCC 中单选一项；地形独立选择，可与纵向问题组合记录，也可单独记录。日志自动保存在本机浏览器。</p>
 
 <div>
 <h4>✅正常事件记录（蓝色，直接点击）</h4>
@@ -96,19 +178,72 @@ h4{margin:0;font-size:16px;}
 </div>
 
 <div>
-<h4>🔴ACC问题</h4>
-<div class="event-row">
-<select id="selAcc">
-<option value="">--选择ACC问题--</option>
-<option value="未制动">未制动</option>
-<option value="动力不足">动力不足</option>
-<option value="超速">超速</option>
-<option value="异常制动">异常制动</option>
-</select>
-<input type="checkbox" id="tteAcc">
-<label for="tteAcc">TTE</label>
-<button class="btn btn-red" onclick="addLogFromSelect('selAcc','tteAcc')">记录</button>
+<div class="long-header"><h4>🔴纵向问题记录</h4><span class="long-hint">地形条件与纵向问题可关联记录</span></div>
+<section class="terrain-panel" aria-labelledby="terrainTitle">
+<div class="subhead"><h5 id="terrainTitle">🗻 地形条件</h5><span class="pill-meta">道路形态单选 · 坡道条件可多选</span></div>
+<p class="small-help">道路形态选平原或山区；坡道条件可多选。地形既可以单独记录，也可以与一项纵向问题组合记录。</p>
+<div class="terrain-group-title">道路形态（单选）</div>
+<div class="terrain-grid"><label class="terrain-chip"><input type="radio" name="terrainForm" class="terrain-tag" value="平原"><span>平原</span></label>
+<label class="terrain-chip"><input type="radio" name="terrainForm" class="terrain-tag" value="山区"><span>山区</span></label></div>
+<div class="terrain-group-title">坡道过渡（可多选）</div>
+<div class="terrain-grid"><label class="terrain-chip"><input type="checkbox" class="terrain-tag" value="下坡→上坡"><span>下坡→上坡</span></label>
+<label class="terrain-chip"><input type="checkbox" class="terrain-tag" value="上坡→下坡"><span>上坡→下坡</span></label>
+<label class="terrain-chip"><input type="checkbox" class="terrain-tag" value="长上坡"><span>长上坡</span></label>
+<label class="terrain-chip"><input type="checkbox" class="terrain-tag" value="上下坡"><span>上下坡</span></label></div>
+</section>
+<section class="longitudinal-panel" aria-labelledby="longIssuesTitle">
+<div class="subhead"><h5 id="longIssuesTitle">纵向问题</h5><span class="pill-meta">巡航 / 跟车 / PCC 全局单选</span></div>
+<p class="small-help">三个分类共用一个问题选择：每次只能选一项。地形可作为该问题的关联条件。</p>
+<div class="issue-grid">
+<section class="issue-card">
+<h5>① 巡航</h5>
+<p class="small-help">定速 / 限速 / 加减速</p>
+<details class="issue-picker" id="picker巡航">
+<summary><span>选择问题（单选）</span><span class="selected-count" id="count巡航">未选择</span></summary>
+<div class="issue-options"><label class="issue-option"><input type="radio" name="longIssue" class="long-issue" data-category="巡航" value="下坡超速"><span>下坡超速</span></label>
+<label class="issue-option"><input type="radio" name="longIssue" class="long-issue" data-category="巡航" value="弯道超速"><span>弯道超速</span></label>
+<label class="issue-option"><input type="radio" name="longIssue" class="long-issue" data-category="巡航" value="异常掉空档"><span>异常掉空档</span></label>
+<label class="issue-option"><input type="radio" name="longIssue" class="long-issue" data-category="巡航" value="速度低于设定值"><span>速度低于设定值</span></label>
+<label class="issue-option"><input type="radio" name="longIssue" class="long-issue" data-category="巡航" value="动力不足"><span>动力不足</span></label>
+<label class="issue-option"><input type="radio" name="longIssue" class="long-issue" data-category="巡航" value="加速过猛"><span>加速过猛</span></label>
+<label class="issue-option"><input type="radio" name="longIssue" class="long-issue" data-category="巡航" value="速度反复波动"><span>速度反复波动</span></label>
+<label class="issue-option"><input type="radio" name="longIssue" class="long-issue" data-category="巡航" value="异常制动"><span>异常制动</span></label>
+<label class="issue-option"><input type="radio" name="longIssue" class="long-issue" data-category="巡航" value="制动过晚"><span>制动过晚</span></label>
+<label class="issue-option"><input type="radio" name="longIssue" class="long-issue" data-category="巡航" value="制动过猛"><span>制动过猛</span></label>
+<label class="issue-option"><input type="radio" name="longIssue" class="long-issue" data-category="巡航" value="顿挫"><span>顿挫</span></label></div>
+</details>
+</section>
+<section class="issue-card">
+<h5>② 跟车</h5>
+<p class="small-help">车距 / 前车切入切出</p>
+<details class="issue-picker" id="picker跟车">
+<summary><span>选择问题（单选）</span><span class="selected-count" id="count跟车">未选择</span></summary>
+<div class="issue-options"><label class="issue-option"><input type="radio" name="longIssue" class="long-issue" data-category="跟车" value="跟车距离过近"><span>跟车距离过近</span></label>
+<label class="issue-option"><input type="radio" name="longIssue" class="long-issue" data-category="跟车" value="跟车距离过远"><span>跟车距离过远</span></label>
+<label class="issue-option"><input type="radio" name="longIssue" class="long-issue" data-category="跟车" value="跟车速度波动"><span>跟车速度波动</span></label>
+<label class="issue-option"><input type="radio" name="longIssue" class="long-issue" data-category="跟车" value="前车减速响应晚"><span>前车减速响应晚</span></label>
+<label class="issue-option"><input type="radio" name="longIssue" class="long-issue" data-category="跟车" value="跟车制动过猛"><span>跟车制动过猛</span></label>
+<label class="issue-option"><input type="radio" name="longIssue" class="long-issue" data-category="跟车" value="跟车过近未制动"><span>跟车过近未制动</span></label>
+<label class="issue-option"><input type="radio" name="longIssue" class="long-issue" data-category="跟车" value="前车切入响应晚"><span>前车切入响应晚</span></label>
+<label class="issue-option"><input type="radio" name="longIssue" class="long-issue" data-category="跟车" value="前车切入制动过猛"><span>前车切入制动过猛</span></label>
+<label class="issue-option"><input type="radio" name="longIssue" class="long-issue" data-category="跟车" value="前车切出加速恢复慢"><span>前车切出加速恢复慢</span></label></div>
+</details>
+</section>
+<section class="issue-card">
+<h5>③ PCC</h5>
+<p class="small-help">仅保留一个重点问题</p>
+<label class="pcc-single"><input type="radio" name="longIssue" class="long-issue" data-category="PCC" value="下坡接上坡冲坡不足"><span>下坡接上坡冲坡不足</span></label>
+</section>
 </div>
+<input id="longNote" class="long-note" type="text" maxlength="240" placeholder="备注（选填）：坡度、车速、位置、前车情况，如 -3%→+2%，坡底80km/h" aria-label="纵向事件补充信息">
+<div class="long-actions">
+<label class="tte-label"><input type="checkbox" id="tteLong">TTE</label>
+<button type="button" class="btn btn-red" onclick="addLongitudinalLog(false)">记录纵向问题</button>
+<button type="button" class="btn btn-blue" onclick="addLongitudinalLog(true)">仅记录地形</button>
+<button type="button" class="btn btn-light" onclick="clearLongSelection()" title="清除本次选择">清除选择</button>
+</div>
+<div class="selection-status" id="longSelectionStatus" role="status" aria-live="polite">尚未选择问题或地形</div>
+</section>
 </div>
 
 <div>
@@ -243,6 +378,51 @@ function getLogHeaderText(){
     return `${dateShow}，${carVal} ${weightVal},${weatherVal}，${routeVal}`;
 }
 
+// 将旧版纵向日志转换为与横向记录一致的简洁格式。
+// 仅迁移本地保存的历史记录，迁移前留一份原始备份，避免数据丢失。
+function normalizeLegacyLogLine(line){
+    const match = line.match(/^(\d{2}:\d{2}:\d{2}\s+)(.*)$/);
+    if(!match) return [line];
+    const time = match[1], event = match[2];
+    const tte = /\s+tte$/.test(event) ? ' tte' : '';
+    const withoutTte = event.replace(/\s+tte$/,'');
+    const segments = withoutTte.split('｜');
+    const detail = segments.slice(1).map(x=>x.trim()).filter(Boolean);
+    const extra = detail.filter(x=>!/^正常通过$/.test(x)).map(x=>'，'+x).join('');
+
+    if(withoutTte.startsWith('地形场景：')) {
+        const terrain = segments[0].slice('地形场景：'.length);
+        return [time + '地形：' + terrain + extra];
+    }
+    if(withoutTte.startsWith('PCC场景：')) {
+        const terrain = segments[0].slice('PCC场景：'.length);
+        return [time + '地形：' + terrain + extra];
+    }
+    if(withoutTte.startsWith('ACC纵向：')) {
+        const main = segments[0].slice('ACC纵向：'.length);
+        const items=[];
+        for(const m of main.matchAll(/(?:巡航|跟车|PCC)\[([^\]]*)\]/g)){
+            for(const issue of m[1].split('、').map(x=>x.trim()).filter(Boolean)){
+                items.push(time+issue+extra+tte);
+            }
+        }
+        return items.length ? items : [line];
+    }
+    const oldCategory = withoutTte.match(/^ACC-(巡航|跟车)：(.+)$/);
+    if(oldCategory) return [time+oldCategory[2].trim()+tte];
+    if(withoutTte.startsWith('ACC-PCC：')) {
+        const rest=segments[0].slice('ACC-PCC：'.length).trim();
+        const issue=detail.find(x=>x && !x.startsWith('备注：') && x!=='正常通过');
+        const note=detail.find(x=>x.startsWith('备注：'));
+        const terrain=rest ? '，地形：'+rest : '';
+        return issue ? [time+issue+terrain+(note?'，'+note:'')+tte] : [line];
+    }
+    return [line];
+}
+function normalizeLegacyLog(text){
+    return text.split('\n').flatMap(normalizeLegacyLogLine).join('\n');
+}
+
 //页面加载读取本地存储
 window.onload = function(){
     const saveLog = localStorage.getItem(STORAGE_KEY_LOG);
@@ -262,7 +442,15 @@ window.onload = function(){
     document.getElementById('totalMile').value = saveMile || "300";
     document.getElementById('routeText').value = saveRoute || "永乐东-腰市";
 
-    if(saveLog!==null) document.getElementById('logArea').value = saveLog;
+    if(saveLog!==null){
+        const normalizedLog = normalizeLegacyLog(saveLog);
+        if(normalizedLog !== saveLog){
+            const backupKey = STORAGE_KEY_LOG + '_backup_before_format_update';
+            if(localStorage.getItem(backupKey) === null) localStorage.setItem(backupKey, saveLog);
+            localStorage.setItem(STORAGE_KEY_LOG, normalizedLog);
+        }
+        document.getElementById('logArea').value = normalizedLog;
+    }
     if(saveIssue!==null) document.getElementById('issueArea').value = saveIssue;
 
     //监听输入变更自动保存
@@ -352,6 +540,55 @@ function addLogFromSelect(selId,tteId){
     sel.value = "";
 }
 
+// 纵向问题全局单选；道路形态单选、坡道条件可多选。
+// 日志格式与横向事件一致：时间 + 问题描述，可选附加地形和备注。
+function getCheckedValues(selector){
+    return Array.from(document.querySelectorAll(selector + ':checked'), el => el.value);
+}
+function updateLongSelection(){
+    const terrain = getCheckedValues('.terrain-tag');
+    const issue = document.querySelector('.long-issue:checked');
+    for(const category of ['巡航','跟车']){
+        const count = document.getElementById('count'+category);
+        const selected = document.querySelector('.long-issue[data-category="'+category+'"]:checked');
+        count.textContent = selected ? '已选' : '未选择';
+    }
+    document.getElementById('longSelectionStatus').textContent =
+        `${issue ? '问题：'+issue.value : '未选择纵向问题'}；${terrain.length ? '地形：'+terrain.join('、') : '未选择地形'}`;
+}
+function clearLongSelection(){
+    document.querySelectorAll('.long-issue,.terrain-tag').forEach(el=>{el.checked=false;});
+    document.getElementById('longNote').value='';
+    document.getElementById('tteLong').checked=false;
+    document.querySelectorAll('.issue-picker').forEach(el=>{el.open=false;});
+    updateLongSelection();
+}
+function addLongitudinalLog(terrainOnly){
+    const terrain = getCheckedValues('.terrain-tag');
+    const issue = document.querySelector('.long-issue:checked');
+    const note = document.getElementById('longNote').value.trim().replace(/[\r\n]+/g,' ');
+    if(terrainOnly){
+        if(!terrain.length){alert('请先选择至少一个地形条件');return;}
+        if(issue && !confirm('已选择纵向问题。仅记录地形不会记录问题，确定继续吗？')) return;
+    } else if(!issue){
+        alert('请先在巡航、跟车或 PCC 中选择一项问题');return;
+    }
+    let line = `${getNowTime()} `;
+    if(terrainOnly){
+        line += `地形：${terrain.join('、')}`;
+    } else {
+        line += issue.value;
+        if(terrain.length) line += `，地形：${terrain.join('、')}`;
+    }
+    if(note) line += `，备注：${note}`;
+    if(!terrainOnly && document.getElementById('tteLong').checked) line += ' tte';
+    appendLogLine(line);
+    clearLongSelection();
+}
+document.addEventListener('change',e=>{
+    if(e.target.matches('.terrain-tag,.long-issue')) updateLongSelection();
+});
+
 //自定义事件
 function addOtherLogFromSelect(){
     const input = document.getElementById('otherInput');
@@ -434,33 +671,65 @@ let dateShow = dateStr.replace(/(\d{4})-(\d{2})-(\d{2})/, "$1年$2月$3日");
 
 const lines = rawText.split('\n');
 let cnt={
-safeIntervene:0,
-unSafeIntervene:0,
-lccDragon:0,
-ilcOk:0,ilcFail:0,
-alcOk:0,alcFail:0,
-accErrBrake:0,
-avoidOk:0,avoidFail:0,
-tunnelOk:0,tunnelFail:0,
-rampOk:0,rampFail:0
+safeIntervene:0,unSafeIntervene:0,lccDragon:0,
+ilcOk:0,ilcFail:0,alcOk:0,alcFail:0,
+accErrBrake:0,accCruise:0,accFollow:0,accPcc:0,
+avoidOk:0,avoidFail:0,tunnelOk:0,tunnelFail:0,rampOk:0,rampFail:0
 };
+// 按网页实际提供的问题选项分类，新版单选日志无需 ACC 前缀也能正确计数。
+const issueCategories = new Map();
+document.querySelectorAll('.long-issue').forEach(el=>issueCategories.set(el.value,el.dataset.category));
+// 兼容历史版本中缺少分类或已下线的纵向选项。
+const historicCategories = {
+ '未制动':'巡航','超速':'巡航','异常顿挫':'巡航','加速响应慢':'巡航',
+ '前车切入响应晚':'跟车','跟车距离过近':'跟车'
+};
+function countIssue(category,issue){
+    const key = category === '巡航' ? 'accCruise' : category === '跟车' ? 'accFollow' : category === 'PCC' ? 'accPcc' : null;
+    if(key) cnt[key]++;
+    if(issue==='异常制动') cnt.accErrBrake++;
+}
 lines.forEach(line=>{
-const l=line.trim();
-if(!l) return;
-if(l.includes("安全介入")) cnt.safeIntervene++;
-if(l.includes("非安全介入")) cnt.unSafeIntervene++;
-if(l.includes("画龙") || l.includes("LCC持续偏右") || l.includes("LCC持续偏左")) cnt.lccDragon++;
-if(l.includes("正常拨杆换道")) cnt.ilcOk++;
-if(l.includes("拨杆换道失败")) cnt.ilcFail++;
-if(l.includes("正常自动换道")) cnt.alcOk++;
-if(l.includes("自动换道失败")) cnt.alcFail++;
-if(l.includes("异常制动")) cnt.accErrBrake++;
-if(l.includes("正常避让")) cnt.avoidOk++;
-if(l.includes("避让晚")||l.includes("避让未提示")||l.includes("未避让")||l.includes("避让压线")||l.includes("避让播报延迟")) cnt.avoidFail++;
-if(l.includes("通过隧道")) cnt.tunnelOk++;
-if(l.includes("通过匝道")) cnt.rampOk++;
-if(l.includes("匝道压线")||l.includes("匝道前不减速")||l.includes("匝道内行驶左侧车道")||l.includes("出匝道未避让")||l.includes("匝道转向不足")
-||l.includes("匝道转向过度")||l.includes("匝道画龙")||l.includes("匝道入口不自动汇入")||l.includes("匝道速度过快")||l.includes("匝道速度过慢")) cnt.rampFail++;
+    const l=line.trim();
+    if(!l) return;
+    const event=l.replace(/^\d{2}:\d{2}:\d{2}\s+/, '');
+    if(event.startsWith('非安全介入')) cnt.unSafeIntervene++;
+    else if(event.startsWith('安全介入')) cnt.safeIntervene++;
+    if((event.includes('画龙') && !event.includes('匝道画龙')) || event.includes('LCC持续偏右') || event.includes('LCC持续偏左')) cnt.lccDragon++;
+    if(event.includes('正常拨杆换道')) cnt.ilcOk++;
+    if(event.includes('拨杆换道失败')) cnt.ilcFail++;
+    if(event.includes('正常自动换道')) cnt.alcOk++;
+    if(event.includes('自动换道失败')) cnt.alcFail++;
+
+    // 新版：问题描述，地形：...，备注：... tte
+    const simpleIssue = event.split('，')[0].replace(/\s+tte$/,'').trim();
+    if(issueCategories.has(simpleIssue)){
+        countIssue(issueCategories.get(simpleIssue),simpleIssue);
+    } else if(historicCategories[simpleIssue]) {
+        countIssue(historicCategories[simpleIssue],simpleIssue);
+    } else if(event.startsWith('ACC纵向：')){
+        // 上一版支持多个问题的日志：分类[问题1、问题2]；分类[问题3]
+        const main = event.split('｜')[0];
+        for(const match of main.matchAll(/(巡航|跟车|PCC)\[([^\]]*)\]/g)){
+            match[2].split('、').filter(Boolean).forEach(issue=>countIssue(match[1],issue));
+        }
+    } else {
+        // 更早版本：ACC-巡航：问题 或 ACC-PCC：地形｜问题
+        const categoryMatch=event.match(/^ACC-(巡航|跟车|PCC)：(.+)$/);
+        if(categoryMatch){
+            const parts=categoryMatch[2].split('｜');
+            const raw=categoryMatch[1]==='PCC' && parts.length>1 ? parts[1] : parts[0];
+            const issue=raw.replace(/\s+tte$/,'').trim();
+            if(issue) countIssue(categoryMatch[1],issue);
+        }
+    }
+    // 仅分类真正的问题行；独立的“地形：”不计入问题统计。
+    if(event.includes('正常避让')) cnt.avoidOk++;
+    if(event.includes('避让晚')||event.includes('避让未提示')||event.includes('未避让')||event.includes('避让压线')||event.includes('避让播报延迟')) cnt.avoidFail++;
+    if(event.includes('通过隧道')) cnt.tunnelOk++;
+    if(event.includes('通过匝道')) cnt.rampOk++;
+    if(event.includes('匝道压线')||event.includes('匝道前不减速')||event.includes('匝道内行驶左侧车道')||event.includes('出匝道未避让')||event.includes('匝道转向不足')
+       ||event.includes('匝道转向过度')||event.includes('匝道画龙')||event.includes('匝道入口不自动汇入')||event.includes('匝道速度过快')||event.includes('匝道速度过慢')) cnt.rampFail++;
 });
 
 function perK(count){
@@ -481,7 +750,10 @@ out += `3. 非安全介入次数：${cnt.unSafeIntervene}次，实际指标：${
 out += `4. 车道保持（画龙）：${cnt.lccDragon}次，实际指标：${perK(cnt.lccDragon)}次/千公里\n`;
 out += `5. 拨杆换道ILC：总共${cnt.ilcOk+cnt.ilcFail}次，失败${cnt.ilcFail}次，实际指标：${rate(cnt.ilcOk,cnt.ilcFail)}\n`;
 out += `6. 自动换道ALC: 总共${cnt.alcOk+cnt.alcFail}次，失败${cnt.alcFail}次，实际指标：${rate(cnt.alcOk,cnt.alcFail)}\n`;
-out += `7. 自适应巡航ACC: 误制动次数${cnt.accErrBrake}次，实际指标${perK(cnt.accErrBrake)}次/千公里\n`;
+out += `7. 纵向控制：异常制动${cnt.accErrBrake}次，${perK(cnt.accErrBrake)}次/千公里\n`;
+out += `   · 巡航问题：${cnt.accCruise}次，${perK(cnt.accCruise)}次/千公里\n`;
+out += `   · 跟车问题：${cnt.accFollow}次，${perK(cnt.accFollow)}次/千公里\n`;
+out += `   · PCC问题：${cnt.accPcc}次，${perK(cnt.accPcc)}次/千公里\n`;
 out += `8. 智能避让：总共${cnt.avoidOk+cnt.avoidFail}次，失败${cnt.avoidFail}次，实际指标：${rate(cnt.avoidOk,cnt.avoidFail)}\n`;
 out += `9. 隧道通行成功率：总共${cnt.tunnelOk+cnt.tunnelFail}次，失败${cnt.tunnelFail}次，实际指标：${rate(cnt.tunnelOk,cnt.tunnelFail)}\n`;
 out += `10. 匝道辅助: 总共${cnt.rampOk+cnt.rampFail}次，失败${cnt.rampFail}次，实际指标：${rate(cnt.rampOk,cnt.rampFail)}。`;
