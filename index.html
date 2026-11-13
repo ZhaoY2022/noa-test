@@ -21,7 +21,7 @@ input[type="checkbox"],input[type="radio"]{accent-color:var(--blue);width:16px;h
 textarea{display:block;width:100%;min-height:176px;padding:9px;border:1px solid #d2dce7;border-radius:8px;font-size:13px;line-height:1.5;resize:vertical}
 #issueArea{min-height:95px}
 .btn{border:0;border-radius:7px;min-height:36px;padding:7px 11px;margin:0;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap}
-.btn-blue{background:#2875ca;color:#fff}.btn-red{background:#d64646;color:#fff}.btn-light{background:#edf2f8;color:#41617f;border:1px solid #d7e1eb}
+.btn-blue{background:#2875ca;color:#fff}.btn-terrain{background:#0f766e;color:#fff}.btn-red{background:#d64646;color:#fff}.btn-light{background:#edf2f8;color:#41617f;border:1px solid #d7e1eb}
 .btn:active{filter:brightness(.9)}
 :focus-visible{outline:3px solid #9cc8fc;outline-offset:2px}
 .meta-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:8px 10px;margin-bottom:11px}
@@ -135,7 +135,7 @@ textarea{display:block;width:100%;min-height:176px;padding:9px;border:1px solid 
 <p class="help-intro">问题单选，平原/山区可与问题关联或单独记录；坡道场景可直接点击蓝色按钮记录。日志自动保存到当前浏览器。</p>
 
 <div class="quick-section">
-<h4>✅正常事件记录（蓝色，直接点击）</h4>
+<h4>✅正常事件记录（直接点击）</h4>
 <div class="btn-line quick-actions">
 <button class="btn btn-blue" onclick="addNormalLog('正常跟车')">正常跟车</button>
 <button class="btn btn-blue" onclick="addNormalLog('正常前车切入')">正常前车切入</button>
@@ -144,10 +144,10 @@ textarea{display:block;width:100%;min-height:176px;padding:9px;border:1px solid 
 <button class="btn btn-blue" onclick="addNormalLog('正常自动换道')">正常自动换道</button>
 <button class="btn btn-blue" onclick="addNormalLog('通过隧道')">通过隧道</button>
 <button class="btn btn-blue" onclick="addNormalLog('通过匝道')">通过匝道</button>
-<button class="btn btn-blue" onclick="addNormalLog('下坡→上坡')">下坡→上坡</button>
-<button class="btn btn-blue" onclick="addNormalLog('上坡→下坡')">上坡→下坡</button>
-<button class="btn btn-blue" onclick="addNormalLog('长上坡')">长上坡</button>
-<button class="btn btn-blue" onclick="addNormalLog('上下坡')">上下坡</button>
+<button class="btn btn-terrain" onclick="addNormalLog('下坡→上坡')">下坡→上坡</button>
+<button class="btn btn-terrain" onclick="addNormalLog('上坡→下坡')">上坡→下坡</button>
+<button class="btn btn-terrain" onclick="addNormalLog('长上坡')">长上坡</button>
+<button class="btn btn-terrain" onclick="addNormalLog('上下坡')">上下坡</button>
 </div>
 </div>
 
