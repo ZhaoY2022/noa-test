@@ -123,6 +123,7 @@ button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visi
 
 <label>重量：</label>
 <select id="testWeight">
+<option value="空头">空头</option>
 <option value="35t">35t</option>
 <option value="36t">36t</option>
 <option value="37t">37t</option>
@@ -161,28 +162,10 @@ button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visi
 </div>
 
 <div>
-<h4>🔴LCC问题</h4>
-<div class="event-row">
-<select id="selLcc">
-<option value="">--选择LCC问题--</option>
-<option value="超车压线">超车压线</option>
-<option value="弯道内压线">弯道内压线</option>
-<option value="画龙">画龙</option>
-<option value="LCC持续偏右">LCC持续偏右</option>
-<option value="LCC持续偏左">LCC持续偏左</option>
-</select>
-<input type="checkbox" id="tteLcc">
-<label for="tteLcc">TTE</label>
-<button class="btn btn-red" onclick="addLogFromSelect('selLcc','tteLcc')">记录</button>
-</div>
-</div>
-
-<div>
 <div class="long-header"><h4>🔴纵向问题记录</h4><span class="long-hint">地形条件与纵向问题可关联记录</span></div>
 <section class="terrain-panel" aria-labelledby="terrainTitle">
 <div class="subhead"><h5 id="terrainTitle">🗻 地形条件</h5><span class="pill-meta">道路形态单选 · 坡道条件可多选</span></div>
-<p class="small-help">道路形态选平原或山区；坡道条件可多选。地形既可以单独记录，也可以与一项纵向问题组合记录。</p>
-<div class="terrain-group-title">道路形态（单选）</div>
+<div class="terrain-group-title">道路形态</div>
 <div class="terrain-grid"><label class="terrain-chip"><input type="radio" name="terrainForm" class="terrain-tag" value="平原"><span>平原</span></label>
 <label class="terrain-chip"><input type="radio" name="terrainForm" class="terrain-tag" value="山区"><span>山区</span></label></div>
 <div class="terrain-group-title">坡道过渡（可多选）</div>
@@ -193,7 +176,6 @@ button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visi
 </section>
 <section class="longitudinal-panel" aria-labelledby="longIssuesTitle">
 <div class="subhead"><h5 id="longIssuesTitle">纵向问题</h5><span class="pill-meta">巡航 / 跟车 / PCC 全局单选</span></div>
-<p class="small-help">三个分类共用一个问题选择：每次只能选一项。地形可作为该问题的关联条件。</p>
 <div class="issue-grid">
 <section class="issue-card">
 <h5>① 巡航</h5>
@@ -244,6 +226,23 @@ button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visi
 </div>
 <div class="selection-status" id="longSelectionStatus" role="status" aria-live="polite">尚未选择问题或地形</div>
 </section>
+</div>
+
+ <div>
+<h4>🔴LCC问题</h4>
+<div class="event-row">
+<select id="selLcc">
+<option value="">--选择LCC问题--</option>
+<option value="超车压线">超车压线</option>
+<option value="弯道内压线">弯道内压线</option>
+<option value="画龙">画龙</option>
+<option value="LCC持续偏右">LCC持续偏右</option>
+<option value="LCC持续偏左">LCC持续偏左</option>
+</select>
+<input type="checkbox" id="tteLcc">
+<label for="tteLcc">TTE</label>
+<button class="btn btn-red" onclick="addLogFromSelect('selLcc','tteLcc')">记录</button>
+</div>
 </div>
 
 <div>
